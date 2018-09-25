@@ -105,6 +105,27 @@ function findSampleAB(matrix,A,B){
     if(matrixCompare(matrix,Not(Dif(B,A)))){return "!(B/A)"}
     return false
 }
+//class syntax
+class Matrix{
+    constructor(arr){
+        this.arr = arr 
+    }
+    and(matrix){
+        return (new Matrix(And(this.arr,matrix.arr)))
+    }
+    or(matrix){
+        return (new Matrix(Or(this.arr,matrix.arr)))
+    }
+    xor(matrix){
+        return (new Matrix(Xor(this.arr,matrix.arr)))
+    }
+    def(matrix){
+        return (new Matrix(Def(this.arr,matrix.arr)))
+    }
+}
+function not(matrix){
+    return(new Matrix(Not(matrix.arr)))
+}
 let A = [[0,0,0,0,0,0,0],
          [0,0,1,1,1,0,0],
          [0,0,1,1,1,0,0],
@@ -217,5 +238,21 @@ function test23(A,B){
 //test8(A)
 //test10(A,B)
 //test23(A,B)
-console.log(findSampleAB(Xor(Xor(And(A,Not(B)),And(Not(A),B)),And(Not(A),Not(B))),A,B))
-console.log(findSampleAB(Not(Xor(Not(Xor(A,B)),Not(A))),A,B))
+//example
+let task1 = Not(And(Not(And(Not(And(Not(And(A,C)),B)),Not(B))),A))
+console.log("Task 1:")
+console.log(findSampleAB(task1,A,B))
+let task2 = Not(Or(Not(And(Not(Or(A,B)),Not(B))),Not(And(A,B))))
+console.log("Task 2:")
+matrixPrinter(task2)
+//example in classes
+console.log("In classes:")
+let a = new Matrix(A)
+let b = new Matrix(B)
+let c = new Matrix(C)
+console.log("Task 1:")
+let task1class = not(not(not(not(a.and(c)).and(b)).and(not(b))).and(a))
+console.log(findSampleAB(task1class.arr,a.arr,b.arr))
+console.log("Task 1:")
+let task2class = not(not(not(a.or(b)).and(not(b))).or(not(b.and(a))))
+matrixPrinter(task2class.arr)

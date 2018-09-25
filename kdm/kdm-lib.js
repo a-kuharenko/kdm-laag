@@ -105,6 +105,27 @@ function findSampleAB(matrix,A,B){
     if(matrixCompare(matrix,Not(Dif(B,A)))){return "!(B/A)"}
     return false
 }
+//class syntax
+class Matrix{
+    constructor(arr){
+        this.arr = arr 
+    }
+    and(matrix){
+        return (new Matrix(And(this.arr,matrix.arr)))
+    }
+    or(matrix){
+        return (new Matrix(Or(this.arr,matrix.arr)))
+    }
+    xor(matrix){
+        return (new Matrix(Xor(this.arr,matrix.arr)))
+    }
+    def(matrix){
+        return (new Matrix(Def(this.arr,matrix.arr)))
+    }
+}
+function not(matrix){
+    return(new Matrix(Not(matrix.arr)))
+}
 module.exports.matrixPrinter = matrixPrinter
 module.exports.matrixCompare = matrixCompare
 module.exports.Not = Not
@@ -113,3 +134,5 @@ module.exports.Or = Or
 module.exports.Xor = Xor
 module.exports.Dif = Dif
 module.exports.findSampleAB = findSampleAB
+module.exports.Matrix = Matrix
+module.exports.not = not
