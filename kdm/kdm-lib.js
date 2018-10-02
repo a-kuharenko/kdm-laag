@@ -119,8 +119,8 @@ class Matrix{
     xor(matrix){
         return (new Matrix(Xor(this.arr,matrix.arr)))
     }
-    def(matrix){
-        return (new Matrix(Def(this.arr,matrix.arr)))
+    dif(matrix){
+        return (new Matrix(Dif(this.arr,matrix.arr)))
     }
 }
 function not(matrix){
